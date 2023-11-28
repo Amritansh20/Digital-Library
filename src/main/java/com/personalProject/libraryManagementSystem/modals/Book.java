@@ -1,9 +1,11 @@
 package com.personalProject.libraryManagementSystem.modals;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Setter
 @Getter
@@ -12,7 +14,7 @@ import javax.persistence.*;
 @Entity
 @ToString
 @Builder
-public class Book {
+public class Book implements Serializable {
 
 
     @Id
@@ -26,7 +28,8 @@ public class Book {
 
     @JoinColumn
     @ManyToOne
-    @JsonIgnoreProperties("bookList")
+//    @JsonIgnoreProperties("bookList")
+    @JsonIgnore
     private Author author;
 
     private String bookNo;
