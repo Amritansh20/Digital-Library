@@ -94,7 +94,7 @@ public class TxnService {
    }
 
     @Value("${student.valid.days}")
-    private String ValidDays;
+    private String validDays;
     @Value("${student.perday.fine}")
     private Integer finePerDay;
    public int calculateSettlementAmount(Txn txn){
@@ -103,8 +103,8 @@ public class TxnService {
 
        long diff = returnTime - issueTime;
        int daysPassed = (int) TimeUnit.DAYS.convert(diff,TimeUnit.MILLISECONDS);
-       if(daysPassed > Integer.valueOf(ValidDays)){
-        int amount = (daysPassed - Integer.valueOf(ValidDays)) * finePerDay;
+       if(daysPassed > Integer.valueOf(validDays)){
+        int amount = (daysPassed - Integer.valueOf(validDays)) * finePerDay;
         return txn.getPaidCost()-amount;
        }
        return txn.getPaidCost();
