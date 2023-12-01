@@ -17,7 +17,7 @@ public class BookController {
     @Autowired
     BookService bookService;
 
-    @PostMapping("/createBook")
+    @PostMapping("/create")
     public void createBook(@RequestBody CreateBookRequest createBookRequest){
         bookService.createBook(createBookRequest);
     }

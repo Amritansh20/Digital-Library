@@ -26,7 +26,7 @@ public class TxnController {
     TxnService txnService;
     CreateReturnTxnRequest createReturnTxnRequest;
 
-    @PostMapping("/createTxn")
+    @PostMapping("/create")
     public ResponseEntity<GenericResponse<String>> createTxn(@RequestBody @Valid CreateTxnRequest createTxnRequest) throws TxnServiceException {
         String txnId = txnService.createTxn(createTxnRequest);
         GenericResponse genericResponse = GenericResponse.builder().error(null).data(txnId).status(HttpStatus.OK).build();
